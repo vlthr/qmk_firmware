@@ -1,4 +1,8 @@
 #!/bin/sh
+# HOW TO:
+# 1. Start script to see if it compiles
+# 2. Once it prompts you to continue, press FN_x+(top right button on keyboard) to flash the left side (FN_x is the bottom left modifier)
+# 3. Once finished, press FN_x+(top left button on keyboard) to flash the right side. (FN_x is the bottom right modifier)
 
 flags=""
 if [ ! -z $1 ]; then
