@@ -15,7 +15,7 @@ if [ $? != 0 ]; then
     exit 1
 fi
 echo "Flashing left hand..."
-if zenity --question --text "Do you want to flash the left hand?"; then
+if zenity --question --text "Are you ready to flash the left hand?"; then
     sudo make -C ../../../../ ergodox-infinity-vlthr-dfu-util $flags
 fi
 
@@ -24,6 +24,6 @@ if [ $? != 0 ]; then
     exit 1
 fi
 echo "Flashing right hand..."
-if zenity --question --text "Do you want to flash the left hand?"; then
+if zenity --question --text "Are you ready to flash the right hand?"; then
     sudo make -C ../../../../ ergodox-infinity-vlthr-dfu-util MASTER=right
 fi
