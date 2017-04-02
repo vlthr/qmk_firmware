@@ -70,17 +70,17 @@ static keyframe_animation_t color_animation = {
     // Note that there's a 200 ms no-operation frame,
     // this prevents the color from changing when activating the layer
     // momentarily
-    .frame_lengths = {MS2ST(200), MS2ST(500)},
+    .frame_lengths = {MS2ST(50), MS2ST(500)},
     .frame_functions = {keyframe_no_operation, keyframe_animate_backlight_color},
 };
 
 // The LCD animation alternates between the layer name display and a
 // bitmap that displays all active layers
 static keyframe_animation_t lcd_animation = {
-    .num_frames = 2,
+    .num_frames = 1,
     .loop = true,
-    .frame_lengths = {MS2ST(2000), MS2ST(3000)},
-    .frame_functions = {display_welcome, display_layer},
+    .frame_lengths = {MS2ST(3000)},
+    .frame_functions = {display_layer},
 };
 
 static keyframe_animation_t suspend_animation = {
