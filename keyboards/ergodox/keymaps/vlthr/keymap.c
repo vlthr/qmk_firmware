@@ -10,62 +10,14 @@
 #include "infinity.h"
 #endif
 
-#define LCA(kc) (kc | QK_LCTL | QK_LALT)
-#define LSS(kc) (kc | QK_LSFT | QK_LGUI)
-
 #define TODO KC_SLSH
-#define F_RALT KC_RALT
-#define F_RCTL KC_RCTL
-#define F_TERM LCA(KC_T)
-#define F_MAX  LALT(KC_F10)  // Toggle maximazation state
-
-
-#define LCA_T(kc) MT((MOD_LCTL | MOD_LALT), kc)
-#define LSS_T(kc) MT((MOD_LSFT | MOD_LGUI), kc)  // Shift-Super
-#define LCS_T(kc) MT((MOD_LCTL | MOD_LGUI), kc)  // Ctrl-Super
-
-#define F_MOTION OSL(MOTION)
-#define F_NUMPAD OSL(NUMPAD)
-#define F_FNx OSL(FNx)
-#define F_LSFT OSM(MOD_LSFT)
-#define F_RSFT OSM(MOD_RSFT)
-#define F_LCTL OSM(MOD_LCTL)
-#define F_LALT OSM(MOD_LALT)
-#define F_ENT LCS_T(KC_ENT)
-#define F_SPC LALT_T(KC_SPC)
-#define F_BSPC LSS_T(KC_BSPC)
-#define F_DELT LSS_T(KC_DELT)
-#define LT_UP  LT(DBG, KC_UP)
-#define LT_DOWN  LT(DBG, KC_DOWN)
-#define F_HYPR OSM(MOD_HYPR)
-#define F_MEH  OSM(MOD_MEH)
-/* #else */
-
-/* #define F_MOTION KC_FN0 */
-/* #define F_NUMPAD KC_FN1 */
-/* #define F_FNx KC_FN2 */
-/* #define F_LSFT KC_FN3 */
-/* #define F_RSFT KC_FN4 */
-/* #define F_LCTL KC_FN5 */
-/* #define F_LALT KC_FN6 */
-/* #define F_ENT KC_FN7 */
-/* #define F_SPC KC_FN8 */
-/* #define F_BSPC KC_FN9 */
-/* #define F_DELT KC_FN10 */
-/* #define LT_UP  KC_FN11 */
-/* #define LT_DOWN KC_FN12 */
-/* #define F_MEH KC_FN13 */
-/* #define F_HYPR KC_FN14 */
-/* #endif */
 
 #define F_BROWSER M(BROWSER)
 
-enum keymaps_layers {
-  BASE = 0, // default layer
-  NUMPAD,   // numpad
-  MOTION,   // Mouse and keyboard motion keys
-  FNx,
-};
+#define BASE 0 // default layer
+#define FNx 1 // symbols
+#define NUMPAD 2 // media keys
+#define MOTION 3 // media keys
 
 enum custom_keycodes {
   PLACE_HOLDER = 0, // can always be here
@@ -106,8 +58,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_EQL,   KC_1,    KC_2,    KC_3,   KC_4,       KC_5,     TODO,
         KC_TAB,   KC_Q,    KC_W,    KC_E,   KC_R,       KC_T,     TODO,
         KC_LCTL,  KC_A,    KC_S,    KC_D,   KC_F,       KC_G,
-        KC_LSFT,  KC_Z,    KC_X,    KC_C,   KC_V,       KC_B,     F_NUMPAD,
-        MO(FNx),  KC_GRV,  TODO,    KC_LGUI,MO(FNx),
+        KC_LSFT,  KC_Z,    KC_X,    KC_C,   KC_V,       KC_B,     MO(NUMPAD),
+        MO(FNx),  KC_GRV,  TODO,    KC_LGUI,MO(MOTION),
                                                         KC_LALT,   TODO,
                                                                    TODO,
                                             KC_LCTL,    KC_BSPC,   KC_DEL,
@@ -155,9 +107,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRNS,    KC_TRNS,         KC_TRNS,
        // right hand
        KC_APP,    KC_F6,     KC_F7,      KC_F8,     KC_F9,      KC_F10,     KC_F11,
-       KC_NO,     KC_NO,     KC_NO,      KC_INS,    KC_NO,      KC_PSCR,    KC_F12,
+       KC_TRNS,   KC_NO,     KC_NO,      KC_INS,    KC_NO,      KC_PSCR,    KC_F12,
                   KC_LEFT,   KC_DOWN,    KC_UP,     KC_RGHT,    KC_NO,      KC_NO,
-       KC_NO,     KC_CALC,   KC_WSCH,    KC_MAIL,   F_BROWSER,  KC_TRNS,  KC_TRNS,
+       KC_TRNS,   KC_CALC,   KC_WSCH,    KC_MAIL,   KC_TRNS,    KC_TRNS,    KC_TRNS,
                              KC_TRNS,    KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,
        KC_PWR,    KC_SLEP,
        KC_TRNS,
@@ -228,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [FNx] = KEYMAP(
        // left hand
        M(VRSN),   M(KDBG),  DEBUG,       KC_NO,     KC_NO,      KC_NO,   M(FLSH),
-       F_MAX,     KC_F1,    KC_F2,       KC_F3,     KC_F4,      KC_F5,   KC_LCBR,
+       KC_NO,     KC_F1,    KC_F2,       KC_F3,     KC_F4,      KC_F5,   KC_LCBR,
        KC_TRNS,   KC_1,     KC_2,        KC_3,      KC_4,       KC_5,
        KC_TRNS,   S(KC_1),  S(KC_2),     S(KC_3),   S(KC_4),    S(KC_5), KC_LBRC,
        KC_TRNS,   KC_TRNS,  KC_NO,       KC_TRNS,   KC_NO,
