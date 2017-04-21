@@ -56,10 +56,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   =    |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |   -    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | TAB    |   Q  |   W  |   E  |   R  |   T  |      |           |      |   Y  |   U  |   I  |   O  |   P  |   \    |
+ * | TAB    |   Q  |   W  |   E  |   R  |   T  |      |           |   _  |   Y  |   U  |   I  |   O  |   P  |   \    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | = NUMPD|   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |' QUOTE |
- * |--------+------+------+------+------+------| ~L2  |           |      |------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------| ~L2  |           |   -  |------+------+------+------+------+--------|
  * |        |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   | LGUI | LALT |      | LCTL |MOTION|                                       | ALtGr| LCTL |  [   |  ]   | LGUI   |
@@ -76,23 +76,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_EQL,   KC_1,    KC_2,    KC_3,      KC_4,       KC_5,     TODO,
+        KC_EQL,   KC_NO,   KC_NO,   KC_NO,     KC_NO,      KC_NO,    TODO,
         KC_TAB,   KC_Q,    KC_W,    KC_E,      KC_R,       KC_T,     TODO,
         V_EQL,    V_A,     KC_S,    KC_D,      KC_F,       KC_G,
-        KC_LSFT,  KC_Z,    V_X,     KC_C,      KC_V,       KC_B,     TODO,
+        KC_NO,    KC_Z,    V_X,     KC_C,      KC_V,       KC_B,     TODO,
         KC_LGUI,  KC_GRV,  TODO,    KC_LCTL,   MO(MOTION),
                                                         KC_LALT,   TODO,
                                                                    TODO,
                                             KC_LSFT,    KC_BSPC,   KC_DEL,
         // right hand
-        TODO,     KC_6,    KC_7,     KC_8,      KC_9,      KC_0,     KC_MINS,
-        TODO,     KC_Y,    KC_U,     KC_I,      KC_O,      KC_P,     KC_BSLS,
-                  KC_H,    KC_J,     KC_K,      KC_L,      V_SMC,    V_QUOT,
-        TODO,     KC_N,    KC_M,     V_COMM,    KC_DOT,    KC_SLSH,  KC_RSFT,
-                           KC_RALT,  KC_RCTL,   KC_LBRC,   KC_RBRC,  KC_RGUI,
-        KC_PGUP,  KC_LALT,
+        TODO,         KC_NO,   KC_NO,    KC_NO,     KC_NO,     KC_NO,    KC_MINS,
+        LSFT(KC_MINS),KC_Y,    KC_U,     KC_I,      KC_O,      KC_P,     KC_BSLS,
+                      KC_H,    KC_J,     KC_K,      KC_L,      V_SMC,    V_QUOT,
+        KC_MINS,      KC_N,    KC_M,     V_COMM,    KC_DOT,    KC_SLSH,  KC_NO,
+                               KC_RALT,  KC_RCTL,   KC_LBRC,   KC_RBRC,  KC_RGUI,
+        KC_PGUP,      KC_LALT,
         TODO,
-        V_ESC,    KC_ENT, KC_SPC
+        V_ESC,        KC_ENT, KC_SPC
     ),
 /* Keymap 1: Motion Layer
  *
