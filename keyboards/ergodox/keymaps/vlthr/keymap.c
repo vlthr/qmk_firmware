@@ -294,3 +294,45 @@ void matrix_scan_user(void) {
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
 };
+
+/* 
+ *
+ * ,---------------------------------------------------.           ,--------------------------------------------------.
+ * |         |      |             |      |      |                  |             |      |      |      |      |        |
+ * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
+ * |         |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |---------+------+------+------+------+------|                  |      |------+------+------+------+------+--------|
+ * |         |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+ * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |         |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |       |      |      |      |      |                                       |      |      |      |      |      |
+ *   `-----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+/* [DVORAK] = KEYMAP( */
+/*        // left hand */
+/*        KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS, */
+/*        KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS, */
+/*        KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, */
+/*        KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS, */
+/*        KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS, */
+/*                                                                 KC_TRNS, KC_TRNS, */
+/*                                                                          KC_TRNS, */
+/*                                                     KC_TRNS,    KC_TRNS, KC_TRNS, */
+/*        // right hand */
+/*        KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS, */
+/*        KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS, */
+/*                   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS, */
+/*        KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS, */
+/*                             KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS, */
+/*        KC_TRNS,   KC_TRNS, */
+/*        KC_TRNS, */
+/*        KC_TRNS,   KC_TRNS,  KC_TRNS */
+/*        ), */
