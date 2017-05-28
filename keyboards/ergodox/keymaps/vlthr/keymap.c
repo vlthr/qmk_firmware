@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------| ~L2  |           |   -  |------+------+------+------+------+--------|
  * |        |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | LGUI | LALT |      | LCTL |MOTION|                                       | ALtGr| LCTL |  [   |  ]   | LGUI   |
+ *   | LGUI | GRV  | NUMP | LCTL |MOTION|                                       | ALtGr| LCTL |      | SYM  | LGUI   |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | LALT | LGUI |       | PGUP | LALT |
@@ -80,21 +80,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_EQL,   KC_NO,   KC_NO,   KC_NO,     KC_NO,      KC_NO,    TODO,
-        KC_TAB,   KC_Q,    KC_W,    KC_E,      KC_R,       KC_T,     TODO,
-        V_EQL,    V_A,     KC_S,    KC_D,      KC_F,       KC_G,
-        KC_NO,    KC_Z,    V_X,     KC_C,      KC_V,       KC_B,     TODO,
-        KC_LGUI,  KC_GRV,  TODO,    KC_LCTL,   MO(MOTION),
-                                                        KC_LALT,   TODO,
+        KC_EQL,  KC_1,    KC_2,    KC_3,      KC_4,       KC_5,     TODO,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,      KC_R,       KC_T,     TODO,
+         V_EQL,  V_A,     KC_S,    KC_D,      KC_F,       KC_G,
+         KC_NO,  KC_Z,    V_X,     KC_C,      KC_V,       KC_B,     TODO,
+        KC_LGUI, KC_GRV,  MO(NUMPAD),KC_LALT, KC_LCTL,
+                                                        MO(MOTION),KC_LGUI,
                                                                    TODO,
                                             KC_LSFT,    KC_BSPC,   KC_DEL,
         // right hand
         TODO,         KC_NO,   KC_NO,    KC_NO,     KC_NO,     KC_NO,    KC_MINS,
         LSFT(KC_MINS),KC_Y,    KC_U,     KC_I,      KC_O,      KC_P,     KC_BSLS,
-                      KC_H,    KC_J,     KC_K,      KC_L,      V_SMC,    V_QUOT,
+                      KC_H,    KC_J,     KC_K,      KC_L,      V_SMC,    KC_QUOT,
         KC_MINS,      KC_N,    KC_M,     V_COMM,    KC_DOT,    KC_SLSH,  KC_NO,
-                               KC_RALT,  KC_RCTL,   KC_LBRC,   KC_RBRC,  KC_RGUI,
-        KC_PGUP,      KC_LALT,
+                               KC_RCTL,  KC_LALT,   MO(QUOTE), KC_RALT,  KC_RGUI,
+        TODO,         TODO,
         TODO,
         V_ESC,        KC_ENT, KC_SPC
     ),
