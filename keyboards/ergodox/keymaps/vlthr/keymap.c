@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                    TODO,
                                             KC_LSFT,    KC_BSPC,   KC_DEL,
         // right hand
-        TODO,         KC_NO,   KC_NO,    KC_NO,     KC_NO,     KC_NO,    KC_MINS,
+        TODO,         KC_6,    KC_7,     KC_8,      KC_9,      KC_0,     KC_MINS,
         LSFT(KC_MINS),KC_Y,    KC_U,     KC_I,      KC_O,      KC_P,     KC_BSLS,
                       KC_H,    KC_J,     KC_K,      KC_L,      V_SMC,    KC_QUOT,
         KC_MINS,      KC_N,    KC_M,     V_COMM,    KC_DOT,    KC_SLSH,  KC_NO,
@@ -127,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,   Adiae,    KC_MS_L,     KC_MS_D,   KC_MS_R,    KC_NO,
        KC_TRNS,   KC_NO,    KC_NO,       KC_NO,     KC_NO,      KC_NO,          KC_VOLD,
        KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,
-                                                                KC_MPLY,        KC_MNXT,
+                                                                KC_TRNS,        KC_MNXT,
                                                                                 KC_TRNS,
                                                     KC_TRNS,    KC_TRNS,         KC_TRNS,
        // right hand
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   KC_LEFT,   KC_DOWN,    KC_UP,     KC_RGHT,    KC_NO,      KC_NO,
        KC_TRNS,   KC_CALC,   KC_WSCH,    KC_MAIL,   KC_TRNS,    KC_TRNS,    KC_TRNS,
                              KC_TRNS,    KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,
-       KC_PWR,    KC_SLEP,
+       KC_TRNS,   KC_TRNS,
        KC_TRNS,
        KC_TRNS,   KC_TRNS,   KC_TRNS
        ),
