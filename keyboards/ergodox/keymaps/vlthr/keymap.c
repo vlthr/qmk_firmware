@@ -16,9 +16,10 @@
 
 #define BASE 0 // default layer
 #define DVORAK 1 // symbols
-#define NUMPAD 2 // media keys
-#define MOTION 3 // media keys
-#define QUOTE 4
+#define NUMPAD_L 2 // media keys
+#define NUMPAD_R 3 // media keys
+#define MOTION 4
+#define QUOTE 5
 
 //#define V_SMC LT(MOTION, KC_SCLN)
 /* #define V_SMC MT(MOD_RSFT, KC_SCLN) */
@@ -27,9 +28,12 @@
 #define V_A KC_A
 /* #define V_U KC_U */
 #define V_U LT(MOTION, KC_U)
-/* #define V_X LT(NUMPAD, KC_X) */
-#define V_X KC_X
-/* #define V_COMM LT(NUMPAD, KC_COMM) */
+/* #define V_E KC_U */
+#define V_E LT(NUMPAD_R, KC_E)
+#define V_DOT LT(MOTION, KC_DOT)
+#define V_X LT(NUMPAD_R, KC_X)
+/* #define V_X KC_X */
+/* #define V_COMM LT(NUMPAD_R, KC_COMM) */
 #define V_COMM KC_COMM
 #define V_ESC MT(MOD_LGUI, KC_ESC)
 /* #define V_CTRL MT(MOD_LCTL, OSL(NUMPAD)) */
@@ -38,7 +42,7 @@
 // Left hand gets symbols when ' is held
 #define V_QUOT LT(QUOTE, KC_QUOT)
 #define V_MINS LT(QUOTE, KC_MINS)
-#define V_EQL LT(NUMPAD, KC_EQL)
+#define V_EQL LT(NUMPAD_L, KC_EQL)
 // Left, right FNx becomes LGUI
 // Right hand LGUI equivalent becomes setting symbol layer
 // Left current CAPS becomes NUMPAD
@@ -85,8 +89,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_EQL,  KC_1,    KC_2,    KC_3,      KC_4,       KC_5,     TODO,
         KC_TAB,  KC_Q,    KC_W,    KC_E,      KC_R,       KC_T,     TODO,
          V_EQL,  V_A,     KC_S,    KC_D,      KC_F,       KC_G,
-         KC_NO,  KC_Z,    V_X,     KC_C,      KC_V,       KC_B,     TODO,
-        KC_LGUI, KC_GRV,  MO(NUMPAD),KC_LALT, KC_LCTL,
+         KC_NO,  KC_Z,    KC_X,    KC_C,      KC_V,       KC_B,     TODO,
+        KC_LGUI, KC_GRV,  MO(NUMPAD_L),KC_LALT,KC_LCTL,
                                                         MO(MOTION),KC_LGUI,
                                                                    TODO,
                                             KC_LSFT,    KC_BSPC,   KC_DEL,
@@ -125,8 +129,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MOTION] = KEYMAP(
        // left hand
        TG(DVORAK),KC_F1,    KC_F2,       KC_F3,     KC_F4,      KC_F5,          KC_MUTE,
-       KC_TRNS,   KC_NO,    KC_NO,     KC_NO,   KC_NO,    KC_NO,          KC_NO,
-       KC_TRNS,   KC_NO,    KC_NO,     KC_NO,   KC_TRNS,    KC_NO,
+       KC_TRNS,   KC_NO,    KC_NO,       KC_TRNS,   KC_NO,    KC_NO,          KC_NO,
+       KC_TRNS,   KC_NO,    KC_NO,       KC_NO,     KC_TRNS,    KC_NO,
        KC_TRNS,   KC_NO,    KC_NO,       KC_NO,     KC_NO,      KC_NO,          KC_VOLD,
        KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,
                                                                 KC_TRNS,        KC_MNXT,
@@ -164,25 +168,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 // Symbol and Numpad
-[NUMPAD] = KEYMAP(
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, M(FLSH),
-       KC_TRNS, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, KC_NO,
-       KC_TRNS, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,
-       KC_TRNS, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS,
-                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                    KC_TRNS, KC_TRNS,
-                                                             KC_TRNS,
-                                           KC_TRNS, KC_TRNS, KC_TRNS,
+[NUMPAD_L] = KEYMAP(
+  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  M(FLSH),
+  KC_TRNS,  KC_EXLM,  KC_AT,    KC_LCBR,  KC_RCBR,  KC_PIPE,  KC_NO,
+            KC_TRNS,  KC_HASH,  KC_DLR,   KC_LPRN,  KC_RPRN,  KC_GRV,
+  KC_TRNS,  KC_PERC,  KC_CIRC,  KC_LBRC,  KC_RBRC,  KC_TILD,  KC_TRNS,
+  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+  KC_TRNS,  KC_TRNS,
+  KC_TRNS,
+  KC_TRNS,  KC_TRNS,  KC_TRNS,
        // right hand
-       KC_TRNS, KC_TRNS, KC_NLCK, KC_EQL,  KC_PSLS, KC_PAST, KC_NO,
-       KC_NO,   KC_BSLS, KC_7,    KC_8,    KC_9,    KC_PMNS, KC_DQT,
-                KC_ASTR, KC_4,    KC_5,    KC_6,    KC_PPLS, KC_QUOT,
-       KC_NO,   KC_AMPR, KC_1,    KC_2,    KC_3,    KC_TRNS, KC_TRNS,
-                         KC_TRNS, KC_0,    KC_0,    KC_0, KC_TRNS,
-       KC_TRNS, KC_TRNS,
-       KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_0
-),
+  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+  KC_TRNS,  KC_TRNS,
+  KC_TRNS,
+  KC_TRNS,  KC_TRNS,  KC_TRNS
+                    ),
+[NUMPAD_R] = KEYMAP(
+                    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  M(FLSH),
+                    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+                              KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+                    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+                    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+                    KC_TRNS,  KC_TRNS,
+                    KC_TRNS,
+                    KC_TRNS,  KC_TRNS,  KC_TRNS,
+                    // right hand
+                    KC_TRNS,  KC_TRNS,  KC_NLCK,  KC_EQL,  KC_PSLS,  KC_PAST,  KC_NO,
+                    KC_NO,    KC_BSLS,  KC_7,     KC_8,    KC_9,     KC_PMNS,  KC_DQT,
+                              KC_ASTR,  KC_4,     KC_5,     KC_6,    KC_PPLS,  KC_QUOT,
+                    KC_NO,    KC_AMPR,  KC_1,     KC_2,    KC_3,     KC_TRNS,  KC_TRNS,
+                    KC_TRNS,  KC_0,     KC_0,     KC_0,    KC_TRNS,
+                    KC_TRNS,  KC_TRNS,
+                    KC_TRNS,
+                    KC_TRNS,  KC_TRNS,  KC_0
+                    ),
 /* 
  *
  * ,---------------------------------------------------.           ,--------------------------------------------------.
@@ -207,9 +230,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [DVORAK] = KEYMAP(
        // left hand
        KC_EQL,    KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS,
-       KC_TRNS,   KC_QUOT,  KC_COMM,   KC_DOT,      KC_P,       KC_Y,    KC_TRNS,
-       KC_TRNS,   KC_A,     KC_O,      KC_E,        V_U,        KC_I,
-       KC_TRNS,   KC_SCLN,  KC_Q,      KC_J,        KC_K,       KC_X,    KC_TRNS,
+       KC_TRNS,   KC_QUOT,  KC_COMM,   V_DOT,       KC_P,       KC_Y,    KC_TRNS,
+       KC_TRNS,   KC_A,     KC_O,      KC_E,        KC_U,       KC_I,
+       KC_TRNS,   KC_SCLN,  KC_Q,      KC_J,        KC_K,       V_X,     KC_TRNS,
        KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,
                                                                 KC_TRNS, KC_TRNS,
                                                                          KC_TRNS,
