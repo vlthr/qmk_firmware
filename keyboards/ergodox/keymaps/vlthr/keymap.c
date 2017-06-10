@@ -25,6 +25,8 @@
 #define V_SMC KC_SCLN
 /* #define V_A MT(MOD_LSFT, KC_A) */
 #define V_A KC_A
+/* #define V_U KC_U */
+#define V_U LT(MOTION, KC_U)
 /* #define V_X LT(NUMPAD, KC_X) */
 #define V_X KC_X
 /* #define V_COMM LT(NUMPAD, KC_COMM) */
@@ -62,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | TAB    |   Q  |   W  |   E  |   R  |   T  |      |           |   _  |   Y  |   U  |   I  |   O  |   P  |   \    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | = NUMPD|   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |' QUOTE |
+ * | = NUMPD|   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |'       |
  * |--------+------+------+------+------+------| ~L2  |           |   -  |------+------+------+------+------+--------|
  * |        |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -123,8 +125,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MOTION] = KEYMAP(
        // left hand
        TG(DVORAK),KC_F1,    KC_F2,       KC_F3,     KC_F4,      KC_F5,          KC_MUTE,
-       KC_TRNS,   Aring,    KC_BTN1,     KC_MS_U,   KC_BTN2,    KC_NO,          KC_VOLU,
-       KC_TRNS,   Adiae,    KC_MS_L,     KC_MS_D,   KC_MS_R,    KC_NO,
+       KC_TRNS,   KC_NO,    KC_NO,     KC_NO,   KC_NO,    KC_NO,          KC_NO,
+       KC_TRNS,   KC_NO,    KC_NO,     KC_NO,   KC_TRNS,    KC_NO,
        KC_TRNS,   KC_NO,    KC_NO,       KC_NO,     KC_NO,      KC_NO,          KC_VOLD,
        KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,
                                                                 KC_TRNS,        KC_MNXT,
@@ -206,7 +208,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        // left hand
        KC_EQL,    KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS,
        KC_TRNS,   KC_QUOT,  KC_COMM,   KC_DOT,      KC_P,       KC_Y,    KC_TRNS,
-       KC_TRNS,   KC_A,     KC_O,      KC_E,        KC_U,       KC_I,
+       KC_TRNS,   KC_A,     KC_O,      KC_E,        V_U,        KC_I,
        KC_TRNS,   KC_SCLN,  KC_Q,      KC_J,        KC_K,       KC_X,    KC_TRNS,
        KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,
                                                                 KC_TRNS, KC_TRNS,
@@ -215,7 +217,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        // right hand
        KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
        KC_TRNS,   KC_F,     KC_G,        KC_C,      KC_R,       KC_L,    KC_BSLS,
-                  KC_D,     KC_H,        KC_T,      KC_N,       KC_S,    V_MINS,
+                  KC_D,     KC_H,        KC_T,      KC_N,       KC_S,    KC_MINS,
        KC_TRNS,   KC_B,     KC_M,        KC_W,      KC_V,       KC_Z,    KC_SLSH,
                             KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
        KC_TRNS,   KC_TRNS,
@@ -249,8 +251,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        // left hand
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_TILD, KC_NO,
-       KC_TRNS, KC_HASH, KC_HASH,  KC_LPRN, KC_RPRN, KC_DLR,
-       KC_TRNS, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_GRV, KC_TRNS,
+       KC_TRNS, KC_CIRC, KC_HASH, KC_LPRN, KC_RPRN, KC_DLR,
+       KC_TRNS, KC_PERC, KC_DLR,  KC_LBRC, KC_RBRC, KC_GRV, KC_TRNS,
                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                                     KC_TRNS, KC_TRNS,
                                                              KC_TRNS,
