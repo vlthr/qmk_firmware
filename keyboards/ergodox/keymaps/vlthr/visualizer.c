@@ -34,7 +34,7 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
     }
     if (state->status.layer & 32) {
       state->target_lcd_color = LCD_COLOR(RED, saturation, 0xFF);
-      state->layer_text = "SYMBOL";
+      layer_text->state = "SYMBOL";
     }
     else if (state->status.layer & 16) {
       state->target_lcd_color = LCD_COLOR(ORANGE, saturation, 0xFF);

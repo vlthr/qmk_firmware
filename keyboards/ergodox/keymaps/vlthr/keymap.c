@@ -20,6 +20,7 @@
 #define NUMPAD_R 3 // media keys
 #define MOTION 4
 #define QUOTE 5
+#define LANG 6
 
 //#define V_SMC LT(MOTION, KC_SCLN)
 /* #define V_SMC MT(MOD_RSFT, KC_SCLN) */
@@ -294,7 +295,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,
        KC_TRNS,   KC_TRNS,   KC_TRNS
        ),
-
+[LANG] = KEYMAP(
+       // left hand
+       KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS,
+       KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS,
+       KC_TRNS,   LALT(KC_A),LALT(KC_SCLN), LALT(KC_E),     KC_TRNS,    KC_TRNS,
+       KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS,
+       KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,
+                                                                KC_TRNS, KC_TRNS,
+                                                                         KC_TRNS,
+                                                    KC_TRNS,    KC_TRNS, KC_TRNS,
+       // right hand
+       KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
+       KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
+                  KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
+       KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
+                            KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
+       KC_TRNS,   KC_TRNS,
+       KC_TRNS,
+       KC_TRNS,   KC_TRNS,  KC_TRNS
+       ),
 };
 const uint16_t PROGMEM fn_actions[] = {
 };
