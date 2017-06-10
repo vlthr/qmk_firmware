@@ -14,7 +14,7 @@
 
 #define F_BROWSER M(BROWSER)
 
-#define BASE 0 // default layer
+#define BASE 0
 #define DVORAK 1 // symbols
 #define NUMPAD_L 2 // media keys
 #define NUMPAD_R 3 // media keys
@@ -31,21 +31,25 @@
 /* #define V_E KC_U */
 #define V_E LT(NUMPAD_R, KC_E)
 #define V_DOT LT(MOTION, KC_DOT)
-#define V_X LT(NUMPAD_R, KC_X)
-/* #define V_X KC_X */
-/* #define V_COMM LT(NUMPAD_R, KC_COMM) */
-#define V_COMM KC_COMM
+/* #define V_X LT(NUMPAD_R, KC_X) */
+#define V_X KC_X
+#define V_COMM LT(NUMPAD_R, KC_COMM)
+/* #define V_COMM KC_COMM */
 #define V_ESC MT(MOD_LGUI, KC_ESC)
 /* #define V_CTRL MT(MOD_LCTL, OSL(NUMPAD)) */
 #define V_CTRL KC_LCTL
 // Shift on both last bottom row
 // Left hand gets symbols when ' is held
-#define V_QUOT LT(QUOTE, KC_QUOT)
+#define V_QUOT MT(MOD_MEH, KC_QUOT)
+/* #define V_QUOT KC_QUOT */
 #define V_MINS LT(QUOTE, KC_MINS)
-#define V_EQL LT(NUMPAD_L, KC_EQL)
+#define V_EQL MT(MOD_HYPR, KC_ESC)
 // Left, right FNx becomes LGUI
 // Right hand LGUI equivalent becomes setting symbol layer
 // Left current CAPS becomes NUMPAD
+#define V_LSFT MT(MOD_LSFT, KC_BSPC)
+#define V_RSFT MT(MOD_LSFT, KC_SPC)
+#define V_MC MT((MOD_LCTL | MOD_LALT), KC_DEL)
 
 #define Adiae UC(0x00e4)
 #define Aring UC(0x00e5)
@@ -93,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LGUI, KC_GRV,  MO(NUMPAD_L),KC_LALT,KC_LCTL,
                                                         MO(MOTION),KC_LGUI,
                                                                    TODO,
-                                            KC_LSFT,    KC_BSPC,   KC_DEL,
+                                            V_LSFT,    V_MC,   KC_DEL,
         // right hand
         TODO,         KC_6,    KC_7,     KC_8,      KC_9,      KC_0,     KC_MINS,
         LSFT(KC_MINS),KC_Y,    KC_U,     KC_I,      KC_O,      KC_P,     KC_BSLS,
@@ -102,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_RCTL,  KC_LALT,   MO(QUOTE), KC_RALT,  KC_RGUI,
         TODO,         TODO,
         TODO,
-        V_ESC,        KC_ENT, KC_SPC
+        V_ESC,        KC_ENT, V_RSFT
     ),
 /* Keymap 1: Motion Layer
  *
@@ -230,7 +234,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [DVORAK] = KEYMAP(
        // left hand
        KC_EQL,    KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, KC_TRNS,
-       KC_TRNS,   KC_QUOT,  KC_COMM,   V_DOT,       KC_P,       KC_Y,    KC_TRNS,
+       KC_TRNS,   V_QUOT,   V_COMM,    V_DOT,       KC_P,       KC_Y,    KC_TRNS,
        KC_TRNS,   KC_A,     KC_O,      KC_E,        KC_U,       KC_I,
        KC_TRNS,   KC_SCLN,  KC_Q,      KC_J,        KC_K,       V_X,     KC_TRNS,
        KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,
@@ -240,7 +244,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        // right hand
        KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
        KC_TRNS,   KC_F,     KC_G,        KC_C,      KC_R,       KC_L,    KC_BSLS,
-                  KC_D,     KC_H,        KC_T,      KC_N,       KC_S,    KC_MINS,
+                  KC_D,     KC_H,        KC_T,      KC_N,       KC_S,    V_MINS,
        KC_TRNS,   KC_B,     KC_M,        KC_W,      KC_V,       KC_Z,    KC_SLSH,
                             KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
        KC_TRNS,   KC_TRNS,

@@ -32,21 +32,25 @@ static void get_visualizer_layer_and_color(visualizer_state_t* state) {
     if (state->status.leds & (1u << USB_LED_CAPS_LOCK)) {
         saturation = 255;
     }
-    if (state->status.layer & 16) {
+    if (state->status.layer & 32) {
       state->target_lcd_color = LCD_COLOR(RED, saturation, 0xFF);
-      state->layer_text = "NEW";
+      state->layer_text = "SYMBOL";
     }
-    else if (state->status.layer & 8) {
+    else if (state->status.layer & 16) {
       state->target_lcd_color = LCD_COLOR(ORANGE, saturation, 0xFF);
       state->layer_text = "MOTION";
     }
+    else if (state->status.layer & 8) {
+      state->target_lcd_color = LCD_COLOR(BLUE, saturation, 0xFF);
+      state->layer_text = "NUMPAD_R";
+    }
     else if (state->status.layer & 4) {
       state->target_lcd_color = LCD_COLOR(BLUE, saturation, 0xFF);
-      state->layer_text = "NUMPAD";
+      state->layer_text = "NUMPAD_L";
     }
     else if (state->status.layer & 2) {
       state->target_lcd_color = LCD_COLOR(PURPLE, saturation, 0xFF);
-      state->layer_text = "FNx";
+      state->layer_text = "DVORAK";
     }
     else if (state->status.layer & 1) {
       state->target_lcd_color = LCD_COLOR(AQUA, saturation, 0xFF);
