@@ -48,9 +48,9 @@
 // Left, right FNx becomes LGUI
 // Right hand LGUI equivalent becomes setting symbol layer
 // Left current CAPS becomes NUMPAD
-#define V_LSFT MT(MOD_LSFT, KC_BSPC)
+#define V_LSFT OSM(MOD_LSFT)
 #define V_RSFT MT(MOD_LSFT, KC_SPC)
-#define V_MC MT((MOD_LCTL | MOD_LALT), KC_DEL)
+#define V_MC MT((MOD_LCTL | MOD_LALT), KC_BSPC)
 #define V_CTL OSM(MOD_LCTL)
 #define V_ALT OSM(MOD_LALT)
 #define V_SFT OSM(MOD_LSFT)
@@ -347,6 +347,20 @@ void matrix_scan_user(void) {
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
 };
+
+
+bool process_record_user (uint16_t keycode, keyrecord_t *record) {
+  if (keycode == KC_ESC && record->event.pressed) {
+    bool queue = true;
+
+    if ((get_oneshot_mods ()) && !has_oneshot_mods_timed_out ()) {
+      clear_oneshot_mods ();
+      queue = false;
+    }
+    return queue;
+  }
+  return true;
+}
 
 /* 
  *
