@@ -51,9 +51,13 @@
 #define V_LSFT MT(MOD_LSFT, KC_BSPC)
 #define V_RSFT MT(MOD_LSFT, KC_SPC)
 #define V_MC MT((MOD_LCTL | MOD_LALT), KC_DEL)
+#define V_CTL OSM(MOD_LCTL)
+#define V_ALT OSM(MOD_LALT)
+#define V_SFT OSM(MOD_LSFT)
 
 #define Adiae UC(0x00e4)
 #define Aring UC(0x00e5)
+
 
 enum custom_keycodes {
   PLACE_HOLDER = 0, // can always be here
@@ -94,20 +98,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_EQL,  KC_1,    KC_2,    KC_3,      KC_4,       KC_5,     TODO,
         KC_TAB,  KC_Q,    KC_W,    KC_E,      KC_R,       KC_T,     TODO,
          V_EQL,  V_A,     KC_S,    KC_D,      KC_F,       KC_G,
-         KC_NO,  KC_Z,    KC_X,    KC_C,      KC_V,       KC_B,     TODO,
-        KC_LGUI, KC_GRV,  MO(NUMPAD_L),KC_LALT,KC_LCTL,
+         KC_NO,  KC_Z,    KC_X,    KC_C,      KC_V,       KC_B,     V_SFT,
+        KC_LGUI, KC_GRV,  MO(NUMPAD_L),V_ALT,V_CTL,
                                                         MO(MOTION),KC_LGUI,
                                                                    TODO,
                                             V_LSFT,    V_MC,   KC_DEL,
         // right hand
         TODO,         KC_6,    KC_7,     KC_8,      KC_9,      KC_0,     KC_MINS,
-        LSFT(KC_MINS),KC_Y,    KC_U,     KC_I,      KC_O,      KC_P,     KC_BSLS,
+        TODO,         KC_Y,    KC_U,     KC_I,      KC_O,      KC_P,     KC_BSLS,
                       KC_H,    KC_J,     KC_K,      KC_L,      V_SMC,    KC_QUOT,
-        KC_MINS,      KC_N,    KC_M,     V_COMM,    KC_DOT,    KC_SLSH,  KC_NO,
-                               KC_RCTL,  KC_LALT,   MO(QUOTE), KC_RALT,  KC_RGUI,
+        V_SFT,        KC_N,    KC_M,     V_COMM,    KC_DOT,    KC_SLSH,  KC_NO,
+                      V_CTL,  V_ALT,   MO(QUOTE), OSM(KC_RALT),  KC_RGUI,
         TODO,         TODO,
         TODO,
-        V_ESC,        KC_ENT, V_RSFT
+        V_ESC,        KC_ENT, KC_SPC
     ),
 /* Keymap 1: Motion Layer
  *
@@ -205,7 +209,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     KC_TRNS,  KC_TRNS,  KC_NLCK,  KC_EQL,  KC_PSLS,  KC_PAST,  KC_NO,
                     KC_NO,    KC_BSLS,  KC_7,     KC_8,    KC_9,     KC_PMNS,  KC_DQT,
                               KC_ASTR,  KC_4,     KC_5,     KC_6,    KC_PPLS,  KC_QUOT,
-                    KC_NO,    KC_AMPR,  KC_1,     KC_2,    KC_3,     KC_TRNS,  KC_TRNS,
+                    KC_NO,    KC_AMPR,  KC_1,     KC_2,    KC_3,     KC_PSLS,  KC_PSLS,
                     KC_TRNS,  KC_0,     KC_0,     KC_0,    KC_TRNS,
                     KC_TRNS,  KC_TRNS,
                     KC_TRNS,
