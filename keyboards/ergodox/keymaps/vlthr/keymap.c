@@ -10,7 +10,7 @@
 #include "infinity.h"
 #endif
 
-#define TODO KC_SLSH
+#define TODO KC_NO
 
 #define F_BROWSER M(BROWSER)
 
@@ -50,10 +50,12 @@
 // Left current CAPS becomes NUMPAD
 #define V_LSFT OSM(MOD_LSFT)
 #define V_RSFT MT(MOD_LSFT, KC_SPC)
-#define V_MC MT((MOD_LCTL | MOD_LALT), KC_BSPC)
+#define V_MC MT((MOD_LCTL | MOD_LALT), KC_ESC)
 #define V_CTL OSM(MOD_LCTL)
 #define V_ALT OSM(MOD_LALT)
 #define V_SFT OSM(MOD_LSFT)
+#define V_TAB MT(MOD_LGUI, KC_TAB)
+#define V_BSLS MT(MOD_LGUI, KC_BSLS)
 
 #define Adiae UC(0x00e4)
 #define Aring UC(0x00e5)
@@ -96,22 +98,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
         KC_EQL,  KC_1,    KC_2,    KC_3,      KC_4,       KC_5,     TODO,
-        KC_TAB,  KC_Q,    KC_W,    KC_E,      KC_R,       KC_T,     TODO,
+        V_TAB,  KC_Q,    KC_W,    KC_E,      KC_R,       KC_T,     KC_DEL,
          V_EQL,  V_A,     KC_S,    KC_D,      KC_F,       KC_G,
          KC_NO,  KC_Z,    KC_X,    KC_C,      KC_V,       KC_B,     V_SFT,
         KC_LGUI, KC_GRV,  KC_LGUI,V_ALT,V_CTL,
                                                         MO(MOTION),KC_LGUI,
                                                                    TODO,
-                                            V_LSFT,    V_MC,   KC_DEL,
+                                              V_LSFT,     V_MC,    TODO,
         // right hand
         TODO,         KC_6,    KC_7,     KC_8,      KC_9,      KC_0,     KC_MINS,
-        TODO,         KC_Y,    KC_U,     KC_I,      KC_O,      KC_P,     KC_BSLS,
+        KC_BSPC,      KC_Y,    KC_U,     KC_I,      KC_O,      KC_P,     V_BSLS,
                       KC_H,    KC_J,     KC_K,      KC_L,      V_SMC,    KC_QUOT,
-        V_SFT,        KC_N,    KC_M,     V_COMM,    KC_DOT,    KC_SLSH,  KC_NO,
-                      V_CTL,  V_ALT,   MO(QUOTE), OSM(KC_RALT),  KC_RGUI,
+        V_SFT,        KC_N,    KC_M,     V_COMM,    KC_DOT,    KC_SLSH,  MO(QUOTE),
+                      V_CTL,  V_ALT,     KC_RGUI,   OSM(KC_RALT),  KC_RGUI,
         KC_LGUI,      TODO,
         TODO,
-        V_ESC,        KC_ENT, KC_SPC
+        KC_DEL,       KC_ENT, KC_SPC
     ),
 /* Keymap 1: Motion Layer
  *
@@ -147,8 +149,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRNS,    KC_TRNS,         KC_TRNS,
        // right hand
        KC_APP,    KC_F6,     KC_F7,      KC_F8,     KC_F9,      KC_F10,     KC_F11,
-       KC_TRNS,   KC_NO,     KC_NO,      KC_INS,    KC_NO,      KC_PSCR,    KC_F12,
-                  KC_LEFT,   KC_DOWN,    KC_UP,     KC_RGHT,    KC_NO,      KC_NO,
+       KC_TRNS,   KC_NO,     LCTL(KC_LEFT),KC_UP,   LCTL(KC_RIGHT),KC_PSCR,    KC_F12,
+                  KC_LEFT,   KC_LEFT,    KC_DOWN,     KC_RGHT,    KC_NO,      KC_NO,
        KC_TRNS,   KC_CALC,   KC_WSCH,    KC_MAIL,   KC_TRNS,    KC_TRNS,    KC_TRNS,
                              KC_TRNS,    KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,
        KC_TRNS,   KC_TRNS,
@@ -248,9 +250,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRNS,    KC_TRNS, KC_TRNS,
        // right hand
        KC_TRNS,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
-       KC_TRNS,   KC_F,     KC_G,        KC_C,      KC_R,       KC_L,    KC_BSLS,
-                  KC_D,     KC_H,        KC_T,      KC_N,       KC_S,    V_MINS,
-       KC_TRNS,   KC_B,     KC_M,        KC_W,      KC_V,       KC_Z,    KC_SLSH,
+       KC_TRNS,   KC_F,     KC_G,        KC_C,      KC_R,       KC_L,    V_BSLS,
+                  KC_D,     KC_H,        KC_T,      KC_N,       KC_S,    KC_SLSH,
+       KC_TRNS,   KC_B,     KC_M,        KC_W,      KC_V,       KC_Z,    KC_TRNS,
                             KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
        KC_TRNS,   KC_TRNS,
        KC_TRNS,
