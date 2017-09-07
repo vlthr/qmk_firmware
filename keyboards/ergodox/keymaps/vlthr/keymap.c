@@ -348,6 +348,13 @@ void matrix_scan_user(void) {
     ergodox_right_led_1_off();
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
+    uint8_t layer = biton32(layer_state);
+    uint8_t led_3 = (layer & (1 << 1)) > 0;
+    uint8_t led_2 = (layer & (1 << 2)) > 0;
+    uint8_t led_1 = (layer & (1 << 3)) > 0;
+    if (led_3) ergodox_right_led_3_on();
+    if (led_2) ergodox_right_led_2_on();
+    if (led_1) ergodox_right_led_1_on();
 };
 
 
