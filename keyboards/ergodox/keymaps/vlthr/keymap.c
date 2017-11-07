@@ -19,8 +19,9 @@
 #define NUMPAD_L 2 // media keys
 #define NUMPAD_R 3 // media keys
 #define MOTION 4
-#define QUOTE 5
-#define LANG 6
+#define ADMIN 5
+#define QUOTE 6
+#define LANG 7
 
 //#define V_SMC LT(MOTION, KC_SCLN)
 /* #define V_SMC MT(MOD_RSFT, KC_SCLN) */
@@ -106,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                    TODO,
                                               V_LSFT,     V_MC,    TODO,
         // right hand
-        TODO,         KC_6,    KC_7,     KC_8,      KC_9,      KC_0,     KC_MINS,
+        MO(ADMIN),    KC_6,    KC_7,     KC_8,      KC_9,      KC_0,     KC_MINS,
         KC_BSPC,      KC_Y,    KC_U,     KC_I,      KC_O,      KC_P,     V_BSLS,
                       KC_H,    KC_J,     KC_K,      KC_L,      V_SMC,    KC_QUOT,
         V_SFT,        KC_N,    KC_M,     V_COMM,    KC_DOT,    KC_SLSH,  MO(QUOTE),
@@ -292,7 +293,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                              KC_TRNS,
                                            KC_TRNS, KC_TRNS, KC_TRNS,
        // right hand
-       M(FLSH),    KC_TRNS,     KC_TRNS,      KC_TRNS,     KC_TRNS,      KC_TRNS,     KC_TRNS,
+       FLSH,    KC_TRNS,     KC_TRNS,      KC_TRNS,     KC_TRNS,      KC_TRNS,     KC_TRNS,
        KC_TRNS,   KC_TRNS,     KC_TRNS,      KC_TRNS,    KC_TRNS,      KC_TRNS,    KC_TRNS,
                   KC_TRNS,   KC_TRNS,    KC_TRNS,     KC_TRNS,    KC_TRNS,      KC_TRNS,
        KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,
@@ -321,6 +322,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,
        KC_TRNS,   KC_TRNS,  KC_TRNS
        ),
+[ADMIN] = KEYMAP(
+       // left hand
+       KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, M(FLSH),
+       KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, RGB_VAI,
+       KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS,
+       KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,    KC_TRNS, RGB_VAD,
+       KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,     KC_TRNS,
+                                                                KC_TRNS, KC_TRNS,
+                                                                         KC_TRNS,
+                                                    KC_TRNS,    KC_TRNS, KC_TRNS,
+       // right hand
+       KC_TRNS,   RGB_TOG,  RGB_MOD,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
+       RGB_HUI,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
+                  KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
+       RGB_HUD,   KC_TRNS,  KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
+                            KC_TRNS,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,
+       KC_TRNS,   KC_TRNS,
+       KC_TRNS,
+       KC_TRNS,   KC_TRNS,  KC_TRNS
+       ),
 };
 const uint16_t PROGMEM fn_actions[] = {
 };
@@ -330,6 +351,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
   switch(id) {
     case FLSH:
       if (record->event.pressed) { // For resetting EEPROM
+        ergodox_right_led_3_on();
+        ergodox_right_led_2_on();
+        ergodox_right_led_1_on();
         reset_keyboard();
       }
       break;
